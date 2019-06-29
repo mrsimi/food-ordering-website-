@@ -1,0 +1,42 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container">
+    <form method="post">
+        <input type="text" value="@ViewData["Location"]" name="searchLocationParams" />
+        <input type="text" value="@ViewData["FoodSearch"]" name="searchFoodParams" />
+        <button type="submit" class="btn"> Search</button>
+    </form>
+
+    <div>
+        @if (Model.ResturantList is null)
+        {
+            @foreach (var item in Model.FoodList)
+            {
+                <p>
+                    @Html.DisplayFor(m => item.FoodName) |
+                    @Html.DisplayFor(m => item.Price)
+                    @Html.DisplayFor(m => item.Description)
+                </p>
+            }
+
+        }
+        else
+        {
+            @foreach (var item in Model.ResturantList)
+            {
+                <p>
+                    @Html.DisplayFor(m => item.ResturantName) |
+                    @Html.DisplayFor(m => item.Address) |
+                    @Html.DisplayFor(m => item.OpeningHours)
+                </p>
+            }
+        }
+
+        <p>@ViewData["SearchError"]</p>
+
+    </div>
+</div>
