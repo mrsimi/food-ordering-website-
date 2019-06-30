@@ -5,8 +5,11 @@
 }
 
 <div class="container">
-    <form method="post">
-        <input type="text" value="@ViewData["Location"]" name="searchLocationParams" />
+    <form method="post" asp-antiforgery="true">
+        @*<input type="text" value="@ViewData["Location"]" name="searchLocationParams" />*@
+        <select asp-items="Model.LocationOptions" name="searchLocationParams">
+             <option value="@ViewData["Location"]"></option>
+        </select>
         <input type="text" value="@ViewData["FoodSearch"]" name="searchFoodParams" />
         <button type="submit" class="btn"> Search</button>
     </form>
