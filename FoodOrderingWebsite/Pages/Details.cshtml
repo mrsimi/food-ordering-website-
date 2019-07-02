@@ -1,0 +1,28 @@
+﻿@page "{id:int?}"
+@model FoodOrderingWebsite.Pages.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+@if (Model.Food != null)
+{
+    <p>@Model.Food.FoodName</p>
+    <p>@Model.Food.Description</p>
+    <p>@Model.Food.Price</p>
+    <p>@Model.Food.Resturant.ResturantName</p>
+}
+else if (Model.Resturant != null)
+{
+    <p>@Model.Resturant.ResturantName</p>
+    <p>@Model.Resturant.OpeningHours</p>
+    <p>
+        @foreach (var item in Model.Resturant.Menu)
+        {
+            <p>@item.FoodName</p>
+            <p>@item.Price</p>
+             <a asp-page="./Details" asp-route-id="@item.ID" asp-route-sender="food">Details</a>
+        }
+    </p>
+}

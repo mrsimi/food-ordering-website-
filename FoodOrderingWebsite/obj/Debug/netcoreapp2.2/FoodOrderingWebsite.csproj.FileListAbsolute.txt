@@ -30,3 +30,4 @@ C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingW
 C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\FoodOrderingWebsite.dll
 C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\FoodOrderingWebsite.pdb
 C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\FoodOrderingWebsite.csproj.CopyComplete
+C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\Razor\Pages\Details.g.cshtml.cs

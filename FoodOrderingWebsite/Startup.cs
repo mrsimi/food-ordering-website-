@@ -58,6 +58,7 @@ namespace FoodOrderingWebsite
 
             services.AddScoped<IUserOperationDbService, UserOperationDbService>();
             services.AddScoped<ISearchService, SearchService>();
+            services.AddScoped<IDetailsService, DetailsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
