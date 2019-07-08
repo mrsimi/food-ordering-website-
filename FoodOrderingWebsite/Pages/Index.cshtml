@@ -23,6 +23,7 @@
                     @Html.DisplayFor(m => item.FoodName) |
                     @Html.DisplayFor(m => item.Price) |
                     @Html.DisplayFor(m => item.Description) |
+                    <img src="@item.FoodImagesUriConcatenated"  width="100" height="100"/>
                     <form asp-page-handler="orders" asp-route-Id="@item.ResturantID" asp-route-foodName="@item.FoodName" asp-route-foodPrice="@item.Price" asp-route-resturantName="@item.Resturant.ResturantName" asp-route-foodSearch="@ViewData["FoodSearch"]" asp-route-locationSearch="@ViewData["Location"]">
                         <button>Add to orders</button>
                     </form>
@@ -41,7 +42,8 @@
                 <p>
                     @Html.DisplayFor(m => item.ResturantName) |
                     @Html.DisplayFor(m => item.Address) |
-                    @Html.DisplayFor(m => item.OpeningHours)
+                    @Html.DisplayFor(m => item.OpeningHours) |
+                    <img src="@item.ResturantImagesUriConcatenated" width="100" height="100" />
                     <a asp-page="./Details" asp-route-id="@item.ID" asp-route-sender="resturant">Details</a>
                 </p>
             }

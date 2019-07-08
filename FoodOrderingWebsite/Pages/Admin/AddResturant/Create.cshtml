@@ -1,0 +1,60 @@
+﻿@page
+@model FoodOrderingWebsite.Pages.Admin.AddResturant.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Resturant</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Resturant.ResturantName" class="control-label"></label>
+                <input asp-for="Resturant.ResturantName" class="form-control" />
+                <span asp-validation-for="Resturant.ResturantName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resturant.Address" class="control-label"></label>
+                <input asp-for="Resturant.Address" class="form-control" />
+                <span asp-validation-for="Resturant.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resturant.Location" class="control-label"></label>
+                <input asp-for="Resturant.Location" class="form-control" />
+                <span asp-validation-for="Resturant.Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resturant.OpeningHours" class="control-label"></label>
+                <input asp-for="Resturant.OpeningHours" class="form-control" />
+                <span asp-validation-for="Resturant.OpeningHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resturant.ResturantImagesUriConcatenated" class="control-label"></label>
+                <input asp-for="Resturant.ResturantImagesUriConcatenated" class="form-control" />
+                <span asp-validation-for="Resturant.ResturantImagesUriConcatenated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <p>Upload an image for the Food</p>
+                    <input type="file" name="resturantImage"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

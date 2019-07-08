@@ -33,3 +33,11 @@ C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingW
 C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\Razor\Pages\Details.g.cshtml.cs
 C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\Razor\Pages\Checkout.g.cshtml.cs
 C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\Razor\Pages\CartPage.g.cshtml.cs
+C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\Razor\Pages\Admin\Create.g.cshtml.cs
+C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\Razor\Pages\Admin\Delete.g.cshtml.cs
+C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\Razor\Pages\Admin\Edit.g.cshtml.cs
+C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\Razor\Pages\Admin\Index.g.cshtml.cs
+C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\Razor\Pages\Admin\AddResturant\Create.g.cshtml.cs
+C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\Razor\Pages\Admin\AddResturant\Delete.g.cshtml.cs
+C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\Razor\Pages\Admin\AddResturant\Edit.g.cshtml.cs
+C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\Razor\Pages\Admin\AddResturant\Index.g.cshtml.cs
