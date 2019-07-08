@@ -26,7 +26,7 @@
                     <form asp-page-handler="orders" asp-route-Id="@item.ResturantID" asp-route-foodName="@item.FoodName" asp-route-foodPrice="@item.Price" asp-route-resturantName="@item.Resturant.ResturantName" asp-route-foodSearch="@ViewData["FoodSearch"]" asp-route-locationSearch="@ViewData["Location"]">
                         <button>Add to orders</button>
                     </form>
-                    <form asp-page="./Checkout" asp-route-foodName="@item.FoodName" asp-route-Id="@item.ID"
+                    <form asp-page="./Checkout" asp-route-foodName="@item.FoodName" asp-route-Id="@item.ID" asp-route-resturantId="@item.ResturantID"
                           asp-route-foodPrice="@item.Price" asp-route-resturantName="@item.Resturant.ResturantName" method="post">
                         <button>Buy now</button>
                     </form>

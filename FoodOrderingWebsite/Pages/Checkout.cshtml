@@ -7,3 +7,6 @@
 <h1>Checkout</h1>
 <p>@Model.Cart.FoodName | @Model.Cart.FoodPrice | @Model.Cart.ResturantName</p>
 
+<form asp-page-handler="completeOrder" method="post" asp-route-foodBought="@Model.Cart.FoodName" asp-route-totalPrice="@Model.Cart.FoodPrice" asp-route-resturantId="@Model.resturant" asp-route-resturantName="@Model.Cart.ResturantName">
+    <button>Complete Order</button>
+</form>
