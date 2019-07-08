@@ -6,9 +6,9 @@
 
 <div class="container">
     <form method="post" asp-antiforgery="true">
-        
+
         <select asp-items="Model.LocationOptions" name="searchLocationParams">
-             <option value="@ViewData["Location"]"></option>
+            <option value="@ViewData["Location"]"></option>
         </select>
         <input type="text" value="@ViewData["FoodSearch"]" name="searchFoodParams" />
         <button type="submit" class="btn"> Search</button>
@@ -19,12 +19,18 @@
         {
             @foreach (var item in Model.FoodList)
             {
-                <p>
+                <div>
                     @Html.DisplayFor(m => item.FoodName) |
-                    @Html.DisplayFor(m => item.Price) | 
+                    @Html.DisplayFor(m => item.Price) |
                     @Html.DisplayFor(m => item.Description) |
-                    <a asp-page="./Details" asp-route-id="@item.ID" asp-route-sender="food">Details</a>
-                </p>
+                    <form asp-page-handler="orders" asp-route-Id="@item.ResturantID" asp-route-foodName="@item.FoodName" asp-route-foodPrice="@item.Price" asp-route-resturantName="@item.Resturant.ResturantName" asp-route-foodSearch="@ViewData["FoodSearch"]" asp-route-locationSearch="@ViewData["Location"]">
+                        <button>Add to orders</button>
+                    </form>
+                    <form asp-page="./Checkout" asp-route-foodName="@item.FoodName" asp-route-Id="@item.ID"
+                          asp-route-foodPrice="@item.Price" asp-route-resturantName="@item.Resturant.ResturantName" method="post">
+                        <button>Buy now</button>
+                    </form>
+                </div>
             }
 
         }

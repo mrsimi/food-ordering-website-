@@ -4,14 +4,16 @@ using FoodOrderingWebsite.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FoodOrderingWebsite.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190707154125_AddedCartToDB")]
+    partial class AddedCartToDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,8 +31,6 @@ namespace FoodOrderingWebsite.Data.Migrations
 
                     b.Property<decimal>("FoodPrice");
 
-                    b.Property<int>("ResturantId");
-
                     b.Property<string>("ResturantName");
 
                     b.Property<string>("UserName");
@@ -38,25 +38,6 @@ namespace FoodOrderingWebsite.Data.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Carts");
-                });
-
-            modelBuilder.Entity("FoodOrderingWebsite.Models.DeliveryStatus", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("EstimatedTimeofArrival");
-
-                    b.Property<string>("FoodBought");
-
-                    b.Property<decimal>("Price");
-
-                    b.Property<string>("UserName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DeliveryStatuses");
                 });
 
             modelBuilder.Entity("FoodOrderingWebsite.Models.Food", b =>

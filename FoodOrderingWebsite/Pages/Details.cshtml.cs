@@ -11,28 +11,23 @@ namespace FoodOrderingWebsite.Pages
 {
     public class DetailsModel : PageModel
     {
-        private readonly IDetailsService _detailsService; 
-        public Food Food { get; set; }
+        private readonly IDetailsService _detailsService;
+        private readonly ICartService _cartService;
+
+   
         public Resturant Resturant { get; set; }
 
 
-        public DetailsModel(IDetailsService detailsService)
+        public DetailsModel(IDetailsService detailsService, ICartService cartService)
         {
             _detailsService = detailsService;
+            _cartService = cartService;
         }
         public async Task<IActionResult> OnGetAsync(int? id, string sender)
         {
             if (id == null)
             {
                 return NotFound();
-            }
-            if (String.Equals(sender, "food"))
-            {
-                Food = await _detailsService.GetOneFood((int)id);
-                if (Food == null)
-                {
-                    return NotFound();
-                }
             }
             else if (String.Equals(sender, "resturant"))
             {
@@ -45,6 +40,23 @@ namespace FoodOrderingWebsite.Pages
 
             return Page();
             
+        }
+
+        public async Task<IActionResult> OnPostOrders(int Id, string foodName, decimal foodPrice, string resturantName)
+        {
+            var foodInfo = new Cart()
+            {
+                FoodName = foodName,                
+                FoodPrice = foodPrice,
+                ResturantName = resturantName,
+                UserName = "simi",
+                ResturantId = Id
+            };
+
+            await _cartService.AddToCart(foodInfo);
+            
+
+            return await OnGetAsync(Id, "resturant");
         }
     }
 }

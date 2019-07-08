@@ -16,5 +16,7 @@ namespace FoodOrderingWebsite.Data
 
         public DbSet<Food> Foods { get; set; }
         public DbSet<Resturant> Resturants { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<DeliveryStatus> DeliveryStatuses { get; set; }
     }
 }

@@ -31,7 +31,7 @@ namespace FoodOrderingWebsite.Services
         {
             if (!String.IsNullOrEmpty(foodName))
             {               
-                var foodSearchResult = await _userDbOpService.GetDbContext().Foods
+                var foodSearchResult = await _userDbOpService.GetDbContext().Foods.Include(m => m.Resturant)
                     .Where(m => m.FoodName.Contains(foodName) && m.Resturant.Location == location).ToListAsync();
                 return foodSearchResult;
             }

@@ -6,23 +6,23 @@
 
 <h1>Details</h1>
 
-@if (Model.Food != null)
-{
-    <p>@Model.Food.FoodName</p>
-    <p>@Model.Food.Description</p>
-    <p>@Model.Food.Price</p>
-    <p>@Model.Food.Resturant.ResturantName</p>
+<p>@Model.Resturant.ResturantName</p>
+<p>@Model.Resturant.OpeningHours</p>
+<p>
+    MENU
+    @if (!@Model.Resturant.Menu.Any())
+    {
+    <p>No Menu yet from this resturant</p>
 }
-else if (Model.Resturant != null)
+else
 {
-    <p>@Model.Resturant.ResturantName</p>
-    <p>@Model.Resturant.OpeningHours</p>
-    <p>
-        @foreach (var item in Model.Resturant.Menu)
-        {
-            <p>@item.FoodName</p>
-            <p>@item.Price</p>
-             <a asp-page="./Details" asp-route-id="@item.ID" asp-route-sender="food">Details</a>
-        }
-    </p>
+    @foreach (var item in Model.Resturant.Menu)
+    {
+        <p>@item.FoodName</p>
+        <p>@item.Price</p>
+        <form asp-page-handler="orders" asp-route-foodName="@item.FoodName" asp-route-Id="@item.ResturantID"
+              asp-route-foodPrice="@item.Price" asp-route-resturantName="@item.Resturant.ResturantName" method="post">
+            <button>Add to orders</button>
+        </form>
+    }
 }

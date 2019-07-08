@@ -31,3 +31,5 @@ C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingW
 C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\FoodOrderingWebsite.pdb
 C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\FoodOrderingWebsite.csproj.CopyComplete
 C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\Razor\Pages\Details.g.cshtml.cs
+C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\Razor\Pages\Checkout.g.cshtml.cs
+C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\obj\Debug\netcoreapp2.2\Razor\Pages\CartPage.g.cshtml.cs
