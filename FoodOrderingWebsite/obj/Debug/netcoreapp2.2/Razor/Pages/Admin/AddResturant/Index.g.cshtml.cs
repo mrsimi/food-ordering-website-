@@ -13,23 +13,8 @@ namespace FoodOrderingWebsite.Pages.Admin.AddResturant
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
-#line 1 "C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\Pages\_ViewImports.cshtml"
-using Microsoft.AspNetCore.Identity;
-
-#line default
-#line hidden
-#line 2 "C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\Pages\_ViewImports.cshtml"
-using FoodOrderingWebsite;
-
-#line default
-#line hidden
-#line 3 "C:\Users\Simi\source\repos\FoodOrderingWebsite\FoodOrderingWebsite\FoodOrderingWebsite\Pages\_ViewImports.cshtml"
-using FoodOrderingWebsite.Data;
-
-#line default
-#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8e3e7ad73c5b17c2db1a73f3625a29b36f35a2fc", @"/Pages/Admin/AddResturant/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"53faf057128910339b223a88dd84b98f05f8bc1b", @"/Pages/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fdbe8046df2b504b1af4c905626e1cba92dd2525", @"/Pages/_ViewImports.cshtml")]
     public class Pages_Admin_AddResturant_Index : global::Microsoft.AspNetCore.Mvc.RazorPages.Page
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-page", "Create", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -70,7 +55,7 @@ using FoodOrderingWebsite.Data;
             WriteLiteral("\r\n<h1>Index</h1>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(143, 35, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8e3e7ad73c5b17c2db1a73f3625a29b36f35a2fc4927", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8e3e7ad73c5b17c2db1a73f3625a29b36f35a2fc4363", async() => {
                 BeginContext(164, 10, true);
                 WriteLiteral("Create New");
                 EndContext();
@@ -200,7 +185,7 @@ using FoodOrderingWebsite.Data;
             WriteLiteral("\r\n            </td>\r\n            <td>\r\n                ");
             EndContext();
             BeginContext(1511, 53, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8e3e7ad73c5b17c2db1a73f3625a29b36f35a2fc11571", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8e3e7ad73c5b17c2db1a73f3625a29b36f35a2fc11007", async() => {
                 BeginContext(1556, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -235,7 +220,7 @@ using FoodOrderingWebsite.Data;
             WriteLiteral(" |\r\n                ");
             EndContext();
             BeginContext(1584, 57, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8e3e7ad73c5b17c2db1a73f3625a29b36f35a2fc13960", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8e3e7ad73c5b17c2db1a73f3625a29b36f35a2fc13396", async() => {
                 BeginContext(1631, 6, true);
                 WriteLiteral("Delete");
                 EndContext();

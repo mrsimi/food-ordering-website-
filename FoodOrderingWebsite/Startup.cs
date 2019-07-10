@@ -1,20 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using FoodOrderingWebsite.Areas.Identity;
+using FoodOrderingWebsite.Data;
+using FoodOrderingWebsite.Services;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
-using FoodOrderingWebsite.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using FoodOrderingWebsite.Services;
-using Microsoft.AspNetCore.ResponseCompression;
 
 namespace FoodOrderingWebsite
 {
@@ -37,11 +33,13 @@ namespace FoodOrderingWebsite
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.Configure<BrotliCompressionProviderOptions>(options => {
+            services.Configure<BrotliCompressionProviderOptions>(options =>
+            {
                 options.Level = System.IO.Compression.CompressionLevel.Optimal;
             });
 
-            services.AddResponseCompression(options => {
+            services.AddResponseCompression(options =>
+            {
                 options.EnableForHttps = true;
                 options.Providers.Add<BrotliCompressionProvider>();
             });
@@ -49,7 +47,8 @@ namespace FoodOrderingWebsite
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
+
+            services.AddDefaultIdentity<ApplicationUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -60,6 +59,7 @@ namespace FoodOrderingWebsite
             services.AddScoped<ISearchService, SearchService>();
             services.AddScoped<IDetailsService, DetailsService>();
             services.AddScoped<ICartService, CartService>();
+            services.AddScoped<ISaveImageService, SaveImageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

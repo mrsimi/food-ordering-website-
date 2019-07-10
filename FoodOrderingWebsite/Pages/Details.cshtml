@@ -20,6 +20,7 @@ else
     {
         <p>@item.FoodName</p>
         <p>@item.Price</p>
+        <img src="~/uploads/@item.FoodImagesUriConcatenated" width="100" height="100" />
         <form asp-page-handler="orders" asp-route-foodName="@item.FoodName" asp-route-Id="@item.ResturantID"
               asp-route-foodPrice="@item.Price" asp-route-resturantName="@item.Resturant.ResturantName" method="post">
             <button>Add to orders</button>

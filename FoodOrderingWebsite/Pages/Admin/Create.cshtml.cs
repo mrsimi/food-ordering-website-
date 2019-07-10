@@ -9,16 +9,20 @@ using FoodOrderingWebsite.Data;
 using FoodOrderingWebsite.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using FoodOrderingWebsite.Services;
 
 namespace FoodOrderingWebsite.Pages.Admin
 {
     public class CreateModel : PageModel
     {
         private readonly FoodOrderingWebsite.Data.ApplicationDbContext _context;
+        private readonly ISaveImageService _imgService;
 
-        public CreateModel(FoodOrderingWebsite.Data.ApplicationDbContext context)
+
+        public CreateModel(FoodOrderingWebsite.Data.ApplicationDbContext context, ISaveImageService imgService)
         {
             _context = context;
+            _imgService = imgService;
         }
 
         public IActionResult OnGet()
@@ -37,18 +41,18 @@ namespace FoodOrderingWebsite.Pages.Admin
                 return Page();
             }
 
-            long size = foodImage.Length;
-            var filePath = Path.GetTempFileName();
+            
             if (foodImage.Length > 0)
             {
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await foodImage.CopyToAsync(stream);
-                }
+                Food.FoodImagesUriConcatenated= await _imgService.SaveImageToFileAsync(foodImage);
+            }
+            else
+            {
+                Food.FoodImagesUriConcatenated = "";
             }
 
             
-            Food.FoodImagesUriConcatenated = filePath;
+           
             _context.Foods.Add(Food);
             await _context.SaveChangesAsync();
 
