@@ -19,17 +19,28 @@ namespace FoodOrderingWebsite.Pages
         {
             _cartService = cartService;
         }
-        public void OnPost(int Id, string foodName, decimal foodPrice, string resturantName, int resturantId)
+        public IActionResult  OnPost(int Id, string foodName, decimal foodPrice, string resturantName, int resturantId)
         {
-            Cart = new Cart()
-            {
-                FoodName = foodName,
-                FoodPrice = foodPrice,
-                ResturantName = resturantName,
-                UserName = "Simi"
-            };
-
             resturant = resturantId;
+            try
+            {
+                string userEmail = User.FindFirst("Email").Value;
+
+                Cart = new Cart()
+                {
+                    FoodName = foodName,
+                    FoodPrice = foodPrice,
+                    ResturantName = resturantName,
+                    UserName = userEmail
+                };
+
+                return Page();
+            }
+            catch (NullReferenceException)
+            {
+                return Redirect("~/Identity/Account/Login");
+            }
+            
 
         }
 
@@ -40,8 +51,8 @@ namespace FoodOrderingWebsite.Pages
                 FoodBought = foodBought,
                 Price = totalPrice,
                 EstimatedTimeofArrival = _cartService.GetETA("somelocation", resturantId),
-                UserName = "simi"
-            };
+                UserName = User.FindFirst("Email").Value
+        };
 
             await _cartService.AddToDeliveryStatusDb(deliveryStatus);
 

@@ -25,7 +25,7 @@ else
               asp-route-foodPrice="@item.Price" asp-route-resturantName="@item.Resturant.ResturantName" method="post">
             <button>Add to orders</button>
         </form>
-        <form asp-page="./Checkout" asp-route-foodName="@item.FoodName" asp-route-Id="@item.ID"
+        <form asp-page="./Checkout" asp-route-foodName="@item.FoodName" asp-route-Id="@item.ID" asp-route-resturantId="@item.ResturantID"
               asp-route-foodPrice="@item.Price" asp-route-resturantName="@item.Resturant.ResturantName" method="post">
             <button>Buy now</button>
         </form>

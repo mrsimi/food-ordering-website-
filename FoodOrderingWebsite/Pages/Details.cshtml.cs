@@ -44,19 +44,28 @@ namespace FoodOrderingWebsite.Pages
 
         public async Task<IActionResult> OnPostOrders(int Id, string foodName, decimal foodPrice, string resturantName)
         {
-            var foodInfo = new Cart()
+            try
             {
-                FoodName = foodName,                
-                FoodPrice = foodPrice,
-                ResturantName = resturantName,
-                UserName = "simi",
-                ResturantId = Id
-            };
+                string userEmail = User.FindFirst("Email").Value;
+                var foodInfo = new Cart()
+                {
+                    FoodName = foodName,
+                    FoodPrice = foodPrice,
+                    ResturantName = resturantName,
+                    UserName = userEmail,
+                    ResturantId = Id
+                };
 
-            await _cartService.AddToCart(foodInfo);
-            
+                await _cartService.AddToCart(foodInfo);
 
-            return await OnGetAsync(Id, "resturant");
+
+                return await OnGetAsync(Id, "resturant");
+            }
+            catch (NullReferenceException)
+            {
+                return Redirect("~/Identity/Account/Login");
+            }
+           
         }
     }
 }

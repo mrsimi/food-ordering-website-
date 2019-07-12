@@ -2,6 +2,7 @@
 using FoodOrderingWebsite.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -17,10 +18,19 @@ namespace FoodOrderingWebsite.Pages
         {
             _cartService = cartService;
         }
-        public async Task OnGet(string userName)
+        public async Task<IActionResult> OnGet()
         {
-            userName = "simi";
-            Cart = await _cartService.GetUserCart(userName);
+            try
+            {
+                string userEmail= User.FindFirst("Email").Value;
+                Cart = await _cartService.GetUserCart(userEmail);
+                return Page();
+            }
+            catch (NullReferenceException)
+            {
+                return Redirect("~/Identity/Account/Login");
+            }
+           
         }
 
         public async Task<IActionResult> OnPostCompleteOrder(string foodBought, decimal totalPrice, string resturantIds)
@@ -31,8 +41,8 @@ namespace FoodOrderingWebsite.Pages
                 FoodBought = foodBought,
                 Price = totalPrice,
                 EstimatedTimeofArrival = _cartService.GetETA("somelocation", int.Parse(resturant[1])),
-                UserName = "simi"
-            };
+                UserName = User.FindFirst("Email").Value
+        };
 
             await _cartService.AddToDeliveryStatusDb(deliveryStatus);
 

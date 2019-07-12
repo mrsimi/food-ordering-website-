@@ -1,6 +1,5 @@
 ﻿using FoodOrderingWebsite.Models;
 using FoodOrderingWebsite.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,7 +11,7 @@ using System.Threading.Tasks;
 namespace FoodOrderingWebsite.Pages
 {
     [ValidateAntiForgeryToken]
-    
+
     public class IndexModel : PageModel
     {
         private readonly ISearchService _searchService;
@@ -86,19 +85,32 @@ namespace FoodOrderingWebsite.Pages
 
         }
 
-       
-        public async Task OnPostOrders(int Id, string foodName, decimal foodPrice, string resturantName, string foodSearch, string locationSearch)
-        {
-            var foodInfo = new Cart()
-            {
-                FoodName = foodName,
-                FoodPrice = foodPrice,
-                ResturantName = resturantName,
-                UserName = "simi",
-                ResturantId = Id
-            };
 
-            await _cartService.AddToCart(foodInfo);
+        public async Task<IActionResult> OnPostOrders(int Id, string foodName, decimal foodPrice, string resturantName, string foodSearch, string locationSearch)
+        {
+            try
+            {
+                string userEmail = User.FindFirst("Email").Value;
+
+                var foodInfo = new Cart()
+                {
+                    FoodName = foodName,
+                    FoodPrice = foodPrice,
+                    ResturantName = resturantName,
+                    UserName = userEmail,
+                    ResturantId = Id
+                };
+                await _cartService.AddToCart(foodInfo);
+
+                return RedirectToAction("OnGetAsync");
+            }
+            catch (NullReferenceException)
+            {
+                return Redirect("~/Identity/Account/Login");
+            }
         }
+
+
     }
 }
+
