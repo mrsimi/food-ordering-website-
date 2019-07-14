@@ -4,56 +4,58 @@
 @{
     ViewData["Title"] = "Index";
 }
+<div class="container">
+    <h1>Index</h1>
 
-<h1>Index</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Resturant[0].ResturantName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Resturant[0].Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Resturant[0].Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Resturant[0].OpeningHours)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Resturant[0].ResturantImagesUriConcatenated)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Resturant) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ResturantName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OpeningHours)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ResturantImagesUriConcatenated)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Resturant[0].ResturantName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Resturant[0].Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Resturant[0].Location)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Resturant[0].OpeningHours)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Resturant[0].ResturantImagesUriConcatenated)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Resturant)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ResturantName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Location)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OpeningHours)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ResturantImagesUriConcatenated)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

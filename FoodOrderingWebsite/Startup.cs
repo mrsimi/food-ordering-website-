@@ -54,6 +54,8 @@ namespace FoodOrderingWebsite
 
             services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, ApplicationUserClaimsPrincipalFactory>();
 
+            services.AddMemoryCache();
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -62,6 +64,7 @@ namespace FoodOrderingWebsite
             services.AddScoped<IDetailsService, DetailsService>();
             services.AddScoped<ICartService, CartService>();
             services.AddScoped<ISaveImageService, SaveImageService>();
+            services.AddScoped<IDeliveryService, DeliveryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

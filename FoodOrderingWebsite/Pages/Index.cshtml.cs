@@ -3,6 +3,7 @@ using FoodOrderingWebsite.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,13 @@ namespace FoodOrderingWebsite.Pages
     {
         private readonly ISearchService _searchService;
         private readonly ICartService _cartService;
+        private IMemoryCache _cache;
 
-        public IndexModel(ISearchService searchService, ICartService cartService)
+        public IndexModel(ISearchService searchService, ICartService cartService, IMemoryCache cache)
         {
             _searchService = searchService;
             _cartService = cartService;
+            _cache = cache;
         }
 
         public IEnumerable<Resturant> ResturantList { get; set; }
@@ -36,18 +39,29 @@ namespace FoodOrderingWebsite.Pages
 
         public async Task OnGetAsync()
         {
+            if (!_cache.TryGetValue("SearchResults", out IEnumerable<Food> SearchResults))
+            {
+                Random random = new Random();
+                string randomLocation = resturantsLocation[random.Next(resturantsLocation.Count())];
 
-            Random random = new Random();
-            string randomLocation = resturantsLocation[random.Next(resturantsLocation.Count())];
+                var resturants = await _searchService.GetResturantsByLocation(randomLocation);
+                ResturantList = resturants;
 
-            var resturants = await _searchService.GetResturantsByLocation(randomLocation);
-            ResturantList = resturants;
+                LocationOptions = new SelectList(resturantsLocation, randomLocation);
 
-            LocationOptions = new SelectList(resturantsLocation, randomLocation);
+                ViewData["FoodSearch"] = "";
+                ViewData["Location"] = randomLocation;
+                ViewData["SearchError"] = "";
+            }
+            else
+            {
+                FoodList = _cache.Get<IEnumerable<Food>>("SearchResults");
+                ViewData["FoodSearch"] = _cache.Get<String>("Food");
+                ViewData["Location"] = _cache.Get<String>("Location");
+                LocationOptions = new SelectList(resturantsLocation, ViewData["Location"]);
+            }
 
-            ViewData["FoodSearch"] = "";
-            ViewData["Location"] = randomLocation;
-            ViewData["SearchError"] = "";
+            
 
         }
 
@@ -69,6 +83,8 @@ namespace FoodOrderingWebsite.Pages
 
 
                 ViewData["Location"] = searchLocation;
+
+               
             }
             else
             {
@@ -80,6 +96,10 @@ namespace FoodOrderingWebsite.Pages
                 }
                 ViewData["Location"] = searchLocation;
                 ViewData["FoodSearch"] = searchFood;
+
+                _cache.Set("SearchResults", FoodList);
+                _cache.Set("Location", searchLocation);
+                _cache.Set("Food", searchFood);
             }
 
 

@@ -4,52 +4,54 @@
 @{
     ViewData["Title"] = "Create";
 }
+<div class="container">
+    <h1>Create</h1>
 
-<h1>Create</h1>
-
-<h4>Resturant</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Resturant.ResturantName" class="control-label"></label>
-                <input asp-for="Resturant.ResturantName" class="form-control" />
-                <span asp-validation-for="Resturant.ResturantName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Resturant.Address" class="control-label"></label>
-                <input asp-for="Resturant.Address" class="form-control" />
-                <span asp-validation-for="Resturant.Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Resturant.Location" class="control-label"></label>
-                <input asp-for="Resturant.Location" class="form-control" />
-                <span asp-validation-for="Resturant.Location" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Resturant.OpeningHours" class="control-label"></label>
-                <input asp-for="Resturant.OpeningHours" class="form-control" />
-                <span asp-validation-for="Resturant.OpeningHours" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <p>Upload an image for the Resturant</p>
-                    <input type="file" name="resturantImage"/>
+    <h4>Resturant</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Resturant.ResturantName" class="control-label"></label>
+                    <input asp-for="Resturant.ResturantName" class="form-control" />
+                    <span asp-validation-for="Resturant.ResturantName" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+                <div class="form-group">
+                    <label asp-for="Resturant.Address" class="control-label"></label>
+                    <input asp-for="Resturant.Address" class="form-control" />
+                    <span asp-validation-for="Resturant.Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Resturant.Location" class="control-label"></label>
+                    <input asp-for="Resturant.Location" class="form-control" />
+                    <span asp-validation-for="Resturant.Location" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Resturant.OpeningHours" class="control-label"></label>
+                    <input asp-for="Resturant.OpeningHours" class="form-control" />
+                    <span asp-validation-for="Resturant.OpeningHours" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <p>Upload an image for the Resturant</p>
+                        <input type="file" name="resturantImage" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-page="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-page="Index">Back to List</a>
+    </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+
+</div>

@@ -4,25 +4,31 @@
     ViewData["Title"] = "CartPage";
 }
 
-<h1>CartPage</h1>
-@{
-    decimal totalPrice = 0.0m;
-    string orderlist = "";
-    string resturantLocations = "";
-  }
-@foreach (var item in Model.Cart)
-{
-    <p>@item.FoodName | @item.FoodPrice | @item.ResturantName</p>
-    <span hidden>@{ 
-        totalPrice = totalPrice + item.FoodPrice;
-        orderlist = orderlist + item.FoodName + ", ";
-        resturantLocations = resturantLocations + ", " + item.ResturantId;
-        }</span>
-}
+<div class="container" style="padding-top: 25px !important;">
+    <h4 class="lead text-muted">Cart</h4>
+    @{
+        decimal totalPrice = 0.0m;
+        string orderlist = "";
+        string resturantLocations = "";
+    }
+    @foreach (var item in Model.Cart)
+    {
+    <p>@item.FoodName <br /><strong> @item.FoodPrice </strong> <br/>@item.ResturantName</p>
+        <span hidden>
+            @{
+                totalPrice = totalPrice + item.FoodPrice;
+                orderlist = orderlist + item.FoodName + ", ";
+                resturantLocations = resturantLocations + ", " + item.ResturantId;
+            }
+        </span>
+    }
 
-<p>Total Price @totalPrice</p>
-<p>Total foods bought: @orderlist</p>
-<p>Resturant Ids: @resturantLocations</p>
-<form asp-page-handler="completeOrder" method="post" asp-route-foodBought="@orderlist" asp-route-totalPrice="@totalPrice" asp-route-resturantIds="@resturantLocations">
-    <button>Complete Order</button>
-</form>
+    <p>Total Price @totalPrice</p>
+    
+    <form asp-page-handler="completeOrder" method="post" asp-route-foodBought="@orderlist" asp-route-totalPrice="@totalPrice" asp-route-resturantIds="@resturantLocations">
+        <button class="btn btn-warning">Complete Order</button>
+    </form>
+</div>
+
+
+

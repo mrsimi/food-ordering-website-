@@ -12949,11 +12949,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Simi\\source\\repos\\FoodOrderingWebsite\\FoodOrderingWebsite\\FoodOrderingWebsite\\FoodOrderingWebsite.csproj",
+      "projectUniqueName": "C:\\Users\\Simi\\source\\repos\\side-projects\\FoodOrderingWebsite\\FoodOrderingWebsite\\foodorderingwebsite\\FoodOrderingWebsite.csproj",
       "projectName": "FoodOrderingWebsite",
-      "projectPath": "C:\\Users\\Simi\\source\\repos\\FoodOrderingWebsite\\FoodOrderingWebsite\\FoodOrderingWebsite\\FoodOrderingWebsite.csproj",
+      "projectPath": "C:\\Users\\Simi\\source\\repos\\side-projects\\FoodOrderingWebsite\\FoodOrderingWebsite\\foodorderingwebsite\\FoodOrderingWebsite.csproj",
       "packagesPath": "C:\\Users\\Simi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Simi\\source\\repos\\FoodOrderingWebsite\\FoodOrderingWebsite\\FoodOrderingWebsite\\obj\\",
+      "outputPath": "C:\\Users\\Simi\\source\\repos\\side-projects\\FoodOrderingWebsite\\FoodOrderingWebsite\\foodorderingwebsite\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

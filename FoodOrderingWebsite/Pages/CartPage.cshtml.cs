@@ -1,5 +1,6 @@
 ﻿using FoodOrderingWebsite.Models;
 using FoodOrderingWebsite.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace FoodOrderingWebsite.Pages
 {
+   
     public class CartPageModel : PageModel
     {
         public IEnumerable<Cart> Cart { get; set; }
@@ -41,7 +43,8 @@ namespace FoodOrderingWebsite.Pages
                 FoodBought = foodBought,
                 Price = totalPrice,
                 EstimatedTimeofArrival = _cartService.GetETA("somelocation", int.Parse(resturant[1])),
-                UserName = User.FindFirst("Email").Value
+                UserName = User.FindFirst("Email").Value,
+                DateTimeOrderCompleted = DateTime.Now
         };
 
             await _cartService.AddToDeliveryStatusDb(deliveryStatus);
