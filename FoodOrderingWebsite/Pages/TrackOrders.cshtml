@@ -1,0 +1,47 @@
+﻿@page
+@model FoodOrderingWebsite.Pages.TrackOrdersModel
+
+@{
+    ViewData["Title"] = "TrackOrders";
+}
+<div class="container" style="padding-top: 25px">
+    <h4 class="lead text-muted">TrackOrders</h4>
+    <table class="table table-responsive-sm">
+        <thead>
+            <tr>
+                <th>
+                    Meals Ordered
+                </th>
+                <th>
+                    Total Price
+                </th>
+                <th>
+                    ETA
+                </th>
+                <th>
+                    Date and Time of Order
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.DeliveryStatus)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FoodBought)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EstimatedTimeofArrival)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateTimeOrderCompleted)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

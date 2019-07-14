@@ -3,10 +3,12 @@
 @{
     ViewData["Title"] = "Checkout";
 }
+<div class="container"style="padding-top: 25px; !importants">
+    <h4 class="lead text-muted" >Checkout</h4>
+    <p>@Model.Cart.FoodName <br /><strong>@Model.Cart.FoodPrice</strong>  <br /> @Model.Cart.ResturantName</p>
 
-<h1>Checkout</h1>
-<p>@Model.Cart.FoodName | @Model.Cart.FoodPrice | @Model.Cart.ResturantName</p>
+    <form asp-page-handler="completeOrder" method="post" asp-route-foodBought="@Model.Cart.FoodName" asp-route-totalPrice="@Model.Cart.FoodPrice" asp-route-resturantId="@Model.resturant" asp-route-resturantName="@Model.Cart.ResturantName">
+        <button class="btn btn-warning">Complete Order</button>
+    </form>
+</div>
 
-<form asp-page-handler="completeOrder" method="post" asp-route-foodBought="@Model.Cart.FoodName" asp-route-totalPrice="@Model.Cart.FoodPrice" asp-route-resturantId="@Model.resturant" asp-route-resturantName="@Model.Cart.ResturantName">
-    <button>Complete Order</button>
-</form>

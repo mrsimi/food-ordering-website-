@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace FoodOrderingWebsite.Models
 {
@@ -13,5 +14,7 @@ namespace FoodOrderingWebsite.Models
         public int EstimatedTimeofArrival { get; set; }
         [Display(Name = "UserName")]
         public string UserName { get; set; }
+        [Display(Name = "Date and Time Order Completed")]
+        public DateTime DateTimeOrderCompleted{ get; set; }
     }
 }

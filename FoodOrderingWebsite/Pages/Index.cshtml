@@ -4,52 +4,84 @@
     ViewData["Title"] = "Home page ";
 }
 
-<div class="container">
-    <form method="post" asp-antiforgery="true">
+<section id="hero-image">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container text-center">
+            <h3>ORDFOD</h3>
+            <p class="lead"><strong>Find Awesome resturants</strong> to bring your meals to the table</p>
 
-        <select asp-items="Model.LocationOptions" name="searchLocationParams">
-            <option value="@ViewData["Location"]"></option>
-        </select>
-        <input type="text" value="@ViewData["FoodSearch"]" name="searchFoodParams" />
-        <button type="submit" class="btn"> Search</button>
-    </form>
+            <form method="post" asp-antiforgery="true" class="form-inline">
 
-    <div>
-        @if (Model.ResturantList is null)
-        {
-            @foreach (var item in Model.FoodList)
-            {
-                <div>
-                    @Html.DisplayFor(m => item.FoodName) |
-                    @Html.DisplayFor(m => item.Price) |
-                    @Html.DisplayFor(m => item.Description) |
-                    <img src="~/uploads/@item.FoodImagesUriConcatenated"  width="100" height="100"/>
-                    <form asp-page-handler="orders" asp-route-Id="@item.ResturantID" asp-route-foodName="@item.FoodName" asp-route-foodPrice="@item.Price" asp-route-resturantName="@item.Resturant.ResturantName" asp-route-foodSearch="@ViewData["FoodSearch"]" asp-route-locationSearch="@ViewData["Location"]">
-                        <button>Add to orders</button>
-                    </form>
-                    <form asp-page="./Checkout" asp-route-foodName="@item.FoodName" asp-route-Id="@item.ID" asp-route-resturantId="@item.ResturantID"
-                          asp-route-foodPrice="@item.Price" asp-route-resturantName="@item.Resturant.ResturantName" method="post">
-                        <button>Buy now</button>
-                    </form>
-                </div>
-            }
-
-        }
-        else
-        {
-            @foreach (var item in Model.ResturantList)
-            {
-                <p>
-                    @Html.DisplayFor(m => item.ResturantName) |
-                    @Html.DisplayFor(m => item.Address) |
-                    @Html.DisplayFor(m => item.OpeningHours) |
-                    <img src="~/uploads/@item.ResturantImagesUriConcatenated" width="100" height="100" />
-                    <a asp-page="./Details" asp-route-id="@item.ID" asp-route-sender="resturant">Details</a>
-                </p>
-            }
-        }
-
-        <p>@ViewData["SearchError"]</p>
-
+                <select asp-items="Model.LocationOptions" class="form-control mb-1" name="searchLocationParams">
+                    <option value="@ViewData["Location"]"></option>
+                </select>
+                <input type="text" value="@ViewData["FoodSearch"]" class="form-control mb-1" name="searchFoodParams" />
+                <button type="submit" class="btn btn-warning"> Search</button>
+            </form>
+        </div>
     </div>
-</div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row" style="justify-content:center">
+            @if (Model.ResturantList is null)
+            {
+                @foreach (var item in Model.FoodList)
+                {
+
+                    <div class="col-lg-3 col-md-4 col-sm-6" style="margin: 20px; ">
+
+                        <div class="card" style="width: 263px; border-radius:0px !important;">
+                            <img class="card-img-top" src="~/uploads/@item.FoodImagesUriConcatenated" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">@Html.DisplayFor(m => item.FoodName)</h5>
+                                <p class="card-text">
+                                    <span style="font-size:14px;">@Html.DisplayFor(m => item.Resturant.ResturantName)</span>
+                                    <span style="float:right; font-size:17px;"><strong>@Html.DisplayFor(m => item.Price)</strong></span>
+                                </p>
+                                <div class="side-form text-center">
+                                    <form class="left" asp-page-handler="orders" asp-route-Id="@item.ResturantID" asp-route-foodName="@item.FoodName" asp-route-foodPrice="@item.Price" asp-route-resturantName="@item.Resturant.ResturantName" asp-route-foodSearch="@ViewData["FoodSearch"]" asp-route-locationSearch="@ViewData["Location"]">
+                                        <button type="submit" class="btn btn-outline-warning">Add </button>
+                                    </form>
+                                    <form class="right" asp-page="./Checkout" asp-route-foodName="@item.FoodName" asp-route-Id="@item.ID" asp-route-resturantId="@item.ResturantID"
+                                          asp-route-foodPrice="@item.Price" asp-route-resturantName="@item.Resturant.ResturantName" method="post">
+                                        <button type="submit" class="btn btn-warning"> Buy </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            }
+            else
+            {
+                @foreach (var item in Model.ResturantList)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6" style="margin: 20px;">
+
+                        <div class="card" style="width: 263px;">
+                            <img class="card-img-top" src="~/uploads/@item.ResturantImagesUriConcatenated" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">@Html.DisplayFor(m => item.ResturantName)</h5>
+                                <p class="card-text">
+                                    @Html.DisplayFor(m => item.Address)
+                                    <span style="font-size:14px; color:#707070; font-style: italic">
+                                        <br />
+                                        <strong>Opening Hours: </strong>@Html.DisplayFor(m => item.OpeningHours)
+                                    </span>
+                                </p>
+                                <div class="side-form text-center">
+                                    <a class="btn btn-warning" style="border-radius: 0px !important" asp-page="./Details" asp-route-id="@item.ID" asp-route-sender="resturant">Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+            <h5>@ViewData["SearchError"]</h5>
+        </div>
+    </div>
+</section>

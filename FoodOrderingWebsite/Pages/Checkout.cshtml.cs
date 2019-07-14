@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FoodOrderingWebsite.Models;
+﻿using FoodOrderingWebsite.Models;
 using FoodOrderingWebsite.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
+using System.Threading.Tasks;
 
 namespace FoodOrderingWebsite.Pages
 {
+  
     public class CheckoutModel : PageModel
     {
         public Cart Cart { get; set; }
@@ -19,7 +19,7 @@ namespace FoodOrderingWebsite.Pages
         {
             _cartService = cartService;
         }
-        public IActionResult  OnPost(int Id, string foodName, decimal foodPrice, string resturantName, int resturantId)
+        public IActionResult OnPost(int Id, string foodName, decimal foodPrice, string resturantName, int resturantId)
         {
             resturant = resturantId;
             try
@@ -40,7 +40,7 @@ namespace FoodOrderingWebsite.Pages
             {
                 return Redirect("~/Identity/Account/Login");
             }
-            
+
 
         }
 
@@ -51,12 +51,13 @@ namespace FoodOrderingWebsite.Pages
                 FoodBought = foodBought,
                 Price = totalPrice,
                 EstimatedTimeofArrival = _cartService.GetETA("somelocation", resturantId),
-                UserName = User.FindFirst("Email").Value
-        };
+                UserName = User.FindFirst("Email").Value,
+                DateTimeOrderCompleted = DateTime.Now
+            };
 
             await _cartService.AddToDeliveryStatusDb(deliveryStatus);
 
-            OnPost(0,foodBought, totalPrice,resturantName, resturantId);
+            OnPost(0, foodBought, totalPrice, resturantName, resturantId);
         }
     }
 }

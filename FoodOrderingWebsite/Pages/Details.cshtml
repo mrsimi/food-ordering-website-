@@ -4,30 +4,58 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
 
-<p>@Model.Resturant.ResturantName</p>
-<p>@Model.Resturant.OpeningHours</p>
-<p>
-    MENU
-    @if (!@Model.Resturant.Menu.Any())
-    {
-    <p>No Menu yet from this resturant</p>
-}
-else
-{
-    @foreach (var item in Model.Resturant.Menu)
-    {
-        <p>@item.FoodName</p>
-        <p>@item.Price</p>
-        <img src="~/uploads/@item.FoodImagesUriConcatenated" width="100" height="100" />
-        <form asp-page-handler="orders" asp-route-foodName="@item.FoodName" asp-route-Id="@item.ResturantID"
-              asp-route-foodPrice="@item.Price" asp-route-resturantName="@item.Resturant.ResturantName" method="post">
-            <button>Add to orders</button>
-        </form>
-        <form asp-page="./Checkout" asp-route-foodName="@item.FoodName" asp-route-Id="@item.ID" asp-route-resturantId="@item.ResturantID"
-              asp-route-foodPrice="@item.Price" asp-route-resturantName="@item.Resturant.ResturantName" method="post">
-            <button>Buy now</button>
-        </form>
-    }
-}
+<section id="hero-image">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container text-center">
+            <p>@Model.Resturant.ResturantName</p>
+            <p>@Model.Resturant.OpeningHours</p>
+        </div>
+    </div>
+</section>
+
+
+<section>
+    <div class="container">
+        <div>
+            <h5 class="lead text-muted">Menu</h5>
+            @if (!@Model.Resturant.Menu.Any())
+            {
+                <p>No Menu yet from this resturant</p>
+            }
+            else
+            {
+                <div class="row">
+                    @foreach (var item in Model.Resturant.Menu)
+                    {
+                        <div class="col-lg-3 col-md-4 col-sm-6" style="margin: 20px; ">
+
+                            <div class="card" style="width: 263px; border-radius:0px !important;">
+                                <img class="card-img-top" src="~/uploads/@item.FoodImagesUriConcatenated" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">@Html.DisplayFor(m => item.FoodName)</h5>
+                                    <p class="card-text">
+                                        <span style="font-size:14px;">@Html.DisplayFor(m => item.Resturant.ResturantName)</span>
+                                        <span style="float:right; font-size:17px;"><strong>@Html.DisplayFor(m => item.Price)</strong></span>
+                                    </p>
+                                    <div class="side-form text-center">
+                                        <form class="left" asp-page-handler="orders" asp-route-Id="@item.ResturantID" asp-route-foodName="@item.FoodName" asp-route-foodPrice="@item.Price" asp-route-resturantName="@item.Resturant.ResturantName" asp-route-foodSearch="@ViewData["FoodSearch"]" asp-route-locationSearch="@ViewData["Location"]">
+                                            <button type="submit" class="btn btn-outline-warning">Add </button>
+                                        </form>
+                                        <form class="right" asp-page="./Checkout" asp-route-foodName="@item.FoodName" asp-route-Id="@item.ID" asp-route-resturantId="@item.ResturantID"
+                                              asp-route-foodPrice="@item.Price" asp-route-resturantName="@item.Resturant.ResturantName" method="post">
+                                            <button type="submit" class="btn btn-warning"> Buy </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+
+
